@@ -1,1 +1,4 @@
-# it2810-webutvikling-h18-prosjekt-2-gruppe--34
+# IT2810 Webutvikling Fall 2018
+## Gruppe 34 - Prosjekt 2
+
+
