@@ -1,0 +1,103 @@
+@media all and (orientation:landscape) {
+  .App {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-areas:
+     "header header header header header"
+     "tab1 tab2 tab3 tab4 ."
+     "content content content content check_box"
+     "content content content content check_box"
+     "content content content content check_box"
+     "content content content content ."
+     "footer footer footer footer footer";
+    padding: 0;
+    font-family: sans-serif;
+    width: 100%;
+  }
+}
+
+@media all and (orientation:portrait) {
+  .App {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-areas:
+     "header header header header"
+     "tab1 tab2 tab3 tab4"
+     "content content content content"
+     "content content content content"
+     "check_box check_box check_box check_box"
+     "footer footer footer footer";
+    padding: 0;
+    font-family: sans-serif;
+    width: 100%;
+  }
+}
+
+.header{
+  grid-area: header;
+  display: inline;
+  margin: 0;
+  text-align: center;
+  background-color: #b2b4b5;
+}
+
+.content {
+  grid-area: content;
+  display: inline;
+  text-align: center;
+}
+
+.picture_box{
+  border: 0.5em solid black;
+  height: 40%;
+  width: inherit;
+}
+
+.quote_box{
+  background-color: pink;
+  height: 25%;
+  width: inherit;
+}
+
+.footer{
+  grid-area: footer;
+  text-align: center;
+}
+
+.tab1{
+  grid-area: tab1;
+  background-color: #66ff33;
+}
+.tab2{
+  grid-area: tab2;
+  background-color: #0066cc;
+}
+.tab3{
+  grid-area: tab3;
+  background-color: #6699ff;
+}
+.tab4{
+  grid-area: tab4;
+  background-color: #9966ff;
+}
+
+.check_box{
+  grid-area: check_box;
+  background-color: #ff33ff;
+  text-align: center
+}
+
+img.resize {
+  width:100%; /* you can use % */
+  height: auto;
+}
+
+#button:hover{background-color: #F4D03F}
+
+#button:active {
+  background-color: #F4D03F;
+  box-shadow: 0px 5px #666;
+  transform: translateY(4px);
+}
