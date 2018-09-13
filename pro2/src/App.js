@@ -1,18 +1,34 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import './index.css';
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div className="header">
+            <h1>UTSTILLINGSTITTEL</h1>
+        </div>
+        <div id="button" className="tab1"></div>
+        <div id="button" className="tab2"></div>
+        <div id="button" className="tab3"></div>
+        <div id="button" className="tab4"></div>
+        <div className="content">
+          <p>CONTENT</p>
+          <div className="picture_box">
+          <img src="./favicon.ico" alt="Space Doggo"/>
+          </div>
+          <div className="quote_box">
+            <p>MICHAEL SCOTT</p>
+          </div>
+        </div>
+        <div className="check_box">
+          <p>CHECKBOX</p>
+        </div>
+        <div className="footer">
+          <h2>FOOTER</h2>
+        </div>
       </div>
     );
   }
