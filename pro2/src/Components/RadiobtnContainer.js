@@ -24,15 +24,14 @@ class RadiobtnContainer extends React.Component {
         console.log(this.state.checkedItems);
 
         let url = '/ContentFiles/Quotes/'+ e.target.value.toString() + Math.floor(1 + Math.random() * 4).toString() + '.json';
-        console.log(url);
 
 
         /* Denne if-testen brukes for å laste inn teksten med AJAX kall til JSON filer. */
         if (isChecked && (item == 'Tekst')) {
                 $.getJSON(url, function (data) {
                     let text = data.text;
-
                     console.log(text);
+                    this.props.callbackFromParent(text);
                     $(document).ready(function(){
                         $('.tekst').text(text);
                     });
@@ -41,6 +40,9 @@ class RadiobtnContainer extends React.Component {
 
         /* Denne koden laster inn bildene med AJAX kall på SVG bildene. */
         if (isChecked && (item == 'Bilde')) {
+          let url_2 = '/ContentFiles/Pictures/'+ e.target.value.toString() + Math.floor(1 + Math.random() * 4).toString() + '.svg';
+          $.get(url_2, function(data) {
+            let svgDataFromChild = data.text;          });
 
             /*$.getJSON(url, function (data) {
                 let text = data.text;

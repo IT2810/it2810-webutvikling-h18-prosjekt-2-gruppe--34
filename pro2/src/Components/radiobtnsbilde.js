@@ -1,23 +1,23 @@
 const radiobtnsbilde = [
     {
         name: 'Bilde',
-        key: 'bildekey1',
-        label: 'bildelabel',
-        value: 'endredenne1',
+        key: 'animal',
+        label: 'Animal',
+        value: 'animal',
 
     },
     {
         name: 'Bilde',
-        key: 'bildekey2',
-        label: 'bildelabel',
-        value: 'endredenne2',
+        key: 'food',
+        label: 'Food',
+        value: 'food',
 
     },
     {
         name: 'Bilde',
-        key: 'bildekey3',
-        label: 'bildelabel',
-        value: 'endredenne3',
+        key: 'internet',
+        label: 'Internet',
+        value: 'internet',
 
     },
 ];
