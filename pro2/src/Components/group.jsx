@@ -7,7 +7,14 @@ class Group extends Component {
     return (
       <div>
         {this.props.btns.map(btn => (
-          <input name={btn.name} type="radio" key={btn.id} id={btn.id} />
+          <input
+            name={btn.name}
+            type="radio"
+            key={btn.id}
+            id={btn.id}
+            onChange={btn.onPicChangeCategory}
+            onImgClick={this.props.onImgClick}
+          />
         ))}
       </div>
     );

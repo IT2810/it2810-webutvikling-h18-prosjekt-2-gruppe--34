@@ -27,11 +27,24 @@ class App extends Component {
 
   constructor() {
     super();
-    this.onPicChangeCategory = this.onPicChangeCategory.bind(this);
+    this.onImgClick = this.onImgClick.bind(this);
+    this.onPicChangeCategory = this.onPicChangeCategory.bind(this); //binder til APP state!
   }
 
   onPicChangeCategory(category) {
     this.setState({ currentImg: category });
+  }
+
+  onImgClick(e) {
+    this.setState({ currentImg: e.target.id });
+  }
+
+  onQuoteClick(e) {
+    this.setState({ currentQuote: e.target.id });
+  }
+
+  onSoundClick(e) {
+    this.setState({ currentSound: e.target.id });
   }
 
   render() {
@@ -42,12 +55,24 @@ class App extends Component {
         <div>
           <div className="Tab" />
         </div>
+        <p>CurrentImg: {this.state.currentImg}</p>
+        <p>CurrentQuote: {this.state.currentQuote}</p>
+        <p>currentSound: {this.state.currentSound}</p>
         <Group
           btns={this.state.imageBtns}
           onChange={this.onPicChangeCategory}
+          onImgClick={this.onImgClick}
         />
-        <Group btns={this.state.quoteBtns} />
-        <Group btns={this.state.soundBtns} />
+        <Group
+          btns={this.state.quoteBtns}
+          onChange={this.onPicChangeCategory}
+          onQuoteClick={this.onQuoteClick}
+        />
+        <Group
+          btns={this.state.soundBtns}
+          onChange={this.onPicChangeCategory}
+          onSoundClick={this.onSoundClick}
+        />
       </React.Fragment>
     );
   }
