@@ -1,8 +1,19 @@
 import React, { Component } from "react";
 import Tab from "./Tab.jsx";
+import Exhibition from "./Exhibition";
+import $ from "jquery";
+
 
 class TabContainer extends Component {
+    constructor() {
+        super();
+
+    }
+
+
+
   //TODO: Bytte media ved trykk.
+
 
   render() {
     const { tabs } = this.props;
@@ -15,27 +26,14 @@ class TabContainer extends Component {
             id={tab.id}
             onClick={this.props.onClick}
             value={tab.value}
-            imgurl={
-              "ContentFiles/Pictures/" +
-              this.props.currentImg +
-              +
-              tab.id +
-              ".svg"
-            }
-            soundurl={
-              "public/ContentFiles/Sounds/" +
-              this.props.currentSound +
-              "/" +
-              tab.id
-            }
-            quoteurl={
-              "public/ContentFiles/Quotes/" +
-              this.props.currentQuote +
-              "/" +
-              tab.id
-            }
           />
       ))}
+          <Exhibition   soundurl="URL"
+                        svg={this.props.svg}
+                        text={this.props.text}
+
+          />
+
       </div>
     );
   }

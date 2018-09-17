@@ -1,36 +1,21 @@
 import React, { Component } from "react";
-import $ from "jquery";
 
 class Image extends Component {
-  constructor(props){
-    super(props)
-    this.test = this.test.bind(this);
-    this.state = {
-      url: this.props.url,
-      svg: "nothing found"
-    }
-  }
 
   componentDidMount(){
-    console.log(this.state.url)
+    /* console.log(this.state.url) KOMMENTERTE UT DETTE PÅ GRUNN AV SPAM I CONSOLE */
   }
 
   async componentDidUpdate(prevProps, prevState){
-    console.log(this.props.url);
-
+   /* console.log(this.props.url); KOMMENTERTE UT DETTE PÅ GRUNN AV SPAM I CONSOLE */
   }
 
-async test() {
-  const response = await fetch(this.props.url, {});
-  const text = await response.text();
-  this.setState({svg: text});
-}
+
 
   render() {
     return (
       <div>
-        <button onClick={this.test}>click me</button>
-        <svg dangerouslySetInnerHTML={{__html: this.state.svg }}></svg>
+        <svg className="picture_box" dangerouslySetInnerHTML={{__html: this.props.svg }}></svg>
       </div>
     );
   }

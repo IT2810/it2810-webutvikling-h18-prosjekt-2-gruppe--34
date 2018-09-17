@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 
 class Sound extends Component {
-  state = {};
   render() {
     return (
       <div>
-        <p>{this.props.url} url</p>
+           <p>{this.props.url}</p>
       </div>
     );
   }
+
 }
 
 export default Sound;

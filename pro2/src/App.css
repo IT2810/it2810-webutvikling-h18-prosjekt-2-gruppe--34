@@ -76,6 +76,14 @@ img.resize {
   width: 100%; /* you can use % */
   height: auto;
 }
+.button {
+  grid-area: tabRow;
+}
+
+.labels {
+  width: 300px;
+  height: 30px;
+}
 
 .button:hover {
   background-color: #f4d03f;
