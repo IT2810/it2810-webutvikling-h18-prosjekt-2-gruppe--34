@@ -1,34 +1,30 @@
 import React, { Component } from "react";
 import "./App.css";
 import "./index.css";
-import RadiobtnContainer from "./Components/RadiobtnContainer.js";
-import TabContainer from "./Components/TabContainer.js";
+import Group from "./Components/group";
 
 class App extends Component {
+  state = {
+    imageBtns: [{ id: 1 }, { id: 2 }, { id: 3 }],
+    quoteBtns: [{ id: 4 }, { id: 5 }, { id: 6 }],
+    soundBtns: [{ id: 7 }, { id: 8 }, { id: 9 }]
+  };
+
   render() {
+    console.log("App - rendered");
     return (
-      <div className="App">
-        <div className="header">
-          <h1>UTSTILLINGSTITTEL</h1>
+      <React.Fragment>
+        <h1>Welcome</h1>
+        <div>
+          <div className="Tab" />
         </div>
-        <TabContainer />
-        <div className="content">
-          <p>CONTENT</p>
-          <div className="picture_box">
-            <img src="./favicon.ico" alt="Space Doggo" />
-          </div>
-          <div className="quote_box">
-            <p>MICHAEL SCOTT</p>
-          </div>
-        </div>
-        <div className="check_box">
-          <p>CHECKBOX</p>
-          <RadiobtnContainer />
-        </div>
-        <div className="footer">
-          <h2>FOOTER</h2>
-        </div>
-      </div>
+        <Group
+          btns={this.state.imageBtns}
+          onChange={this.onPicChangeCategory}
+        />
+        <Group btns={this.state.quoteBtns} />
+        <Group btns={this.state.soundBtns} />
+      </React.Fragment>
     );
   }
 }
