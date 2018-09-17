@@ -1,6 +1,6 @@
 import React from "react";
 
-function Tab(props) {
+function Tab() {
   return <div className={className} />;
 }
 

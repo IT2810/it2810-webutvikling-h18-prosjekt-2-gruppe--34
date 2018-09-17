@@ -22,6 +22,11 @@ class App extends Component {
       { id: 7, name: "sound" },
       { id: 8, name: "sound" },
       { id: 9, name: "sound" }
+    ],
+    tabs: [
+    { id: 7, name: "sound" },
+    { id: 8, name: "sound" },
+    { id: 9, name: "sound" }
     ]
   };
 
@@ -71,6 +76,7 @@ class App extends Component {
           onChange={this.onPicChangeCategory}
           onClick={this.onClick}
         />
+
       </React.Fragment>
     );
   }
