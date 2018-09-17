@@ -5,10 +5,34 @@ import Group from "./Components/group";
 
 class App extends Component {
   state = {
-    imageBtns: [{ id: 1 }, { id: 2 }, { id: 3 }],
-    quoteBtns: [{ id: 4 }, { id: 5 }, { id: 6 }],
-    soundBtns: [{ id: 7 }, { id: 8 }, { id: 9 }]
+    currentImg: null,
+    currentQuote: null,
+    currentSound: null,
+    imageBtns: [
+      { id: 1, name: "img" },
+      { id: 2, name: "img" },
+      { id: 3, name: "img" }
+    ],
+    quoteBtns: [
+      { id: 4, name: "txt" },
+      { id: 5, name: "txt" },
+      { id: 6, name: "txt" }
+    ],
+    soundBtns: [
+      { id: 7, name: "sound" },
+      { id: 8, name: "sound" },
+      { id: 9, name: "sound" }
+    ]
   };
+
+  constructor() {
+    super();
+    this.onPicChangeCategory = this.onPicChangeCategory.bind(this);
+  }
+
+  onPicChangeCategory(category) {
+    this.setState({ currentImg: category });
+  }
 
   render() {
     console.log("App - rendered");

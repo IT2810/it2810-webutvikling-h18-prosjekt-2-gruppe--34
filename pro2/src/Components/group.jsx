@@ -7,7 +7,7 @@ class Group extends Component {
     return (
       <div>
         {this.props.btns.map(btn => (
-          <input type="radio" key={btn.id} id={btn.id} />
+          <input name={btn.name} type="radio" key={btn.id} id={btn.id} />
         ))}
       </div>
     );
