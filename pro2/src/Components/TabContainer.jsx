@@ -1,19 +1,36 @@
 import React, { Component } from "react";
-import Tab from "./Tab";
+import Tab from "./Tab.jsx";
 
 class TabContainer extends Component {
   //TODO: Bytte media ved trykk.
 
   render() {
-    const { tabs, handleClick } = this.props;
+    const { tabs } = this.props;
     return (
-      <div className="tabRow">
+      <div className="tabbRow">
         {tabs.map(tab => (
           <Tab
             key={tab.id}
             tab={tab}
-            id={"tab" + tab.id}
-            onClick={handleClick}
+            id={tab.id}
+            imgurl={
+              "public/ContentFiles/Images/" +
+              this.props.currentImg +
+              "/" +
+              tab.id
+            }
+            soundurl={
+              "public/ContentFiles/Sounds/" +
+              this.props.currentSound +
+              "/" +
+              tab.id
+            }
+            quoteurl={
+              "public/ContentFiles/Quotes/" +
+              this.props.currentQuote +
+              "/" +
+              tab.id
+            }
           />
         ))}
       </div>

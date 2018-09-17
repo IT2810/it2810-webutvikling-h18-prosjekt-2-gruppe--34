@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import "./App.css";
 import "./index.css";
 import Group from "./Components/group";
+import TabContainer from "./Components/TabContainer.jsx";
 
 class App extends Component {
   state = {
     currentImg: null,
     currentQuote: null,
     currentSound: null,
+    currentTab: 1,
     imageBtns: [
       { id: 1, name: "img" },
       { id: 2, name: "img" },
@@ -22,12 +24,19 @@ class App extends Component {
       { id: 7, name: "sound" },
       { id: 8, name: "sound" },
       { id: 9, name: "sound" }
+    ],
+    tabs: [
+      { id: 1, soundId: 0, imageId: 0, quoteId: 0 },
+      { id: 2, soundId: 0, imageId: 0, quoteId: 0 },
+      { id: 3, soundId: 0, imageId: 0, quoteId: 0 },
+      { id: 4, soundId: 0, imageId: 0, quoteId: 0 }
     ]
   };
 
   constructor() {
     super();
     this.onClick = this.onClick.bind(this);
+    this.tabPicker = this.tabPicker.bind(this);
     this.onPicChangeCategory = this.onPicChangeCategory.bind(this); //binder til APP state!
   }
 
@@ -43,6 +52,10 @@ class App extends Component {
     } else if (e.target.name === "sound") {
       this.setState({ currentSound: e.target.id });
     }
+  }
+
+  tabPicker(e) {
+    this.setState({ currentTab: e.target.id });
   }
 
   render() {
@@ -70,6 +83,13 @@ class App extends Component {
           btns={this.state.soundBtns}
           onChange={this.onPicChangeCategory}
           onClick={this.onClick}
+        />
+
+        <TabContainer
+          tabs={this.state.tabs}
+          currentImg={this.state.currentImg}
+          currentSound={this.state.currentSound}
+          currentQuote={this.state.currentQuote}
         />
       </React.Fragment>
     );

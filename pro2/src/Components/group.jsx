@@ -2,8 +2,6 @@ import React, { Component } from "react";
 
 class Group extends Component {
   render() {
-    console.log(this.props.btns);
-
     return (
       <div>
         {this.props.btns.map(btn => (

@@ -66,36 +66,6 @@
   text-align: center;
 }
 
-.tabRow {
-  grid-area: tabRow;
-  display: grid;
-  grid-template-areas: "tab1 tab2 tab3 tab4";
-  width: 100%;
-}
-
-div > .tabRow {
-  text-align: center;
-}
-
-#tab1 {
-  grid-area: tab1;
-  height: 100px;
-  background-color: #66ff33;
-}
-#tab2 {
-  grid-area: tab2;
-  height: 100px;
-  background-color: #0066cc;
-}
-#tab3 {
-  grid-area: tab3;
-  background-color: #6699ff;
-}
-#tab4 {
-  grid-area: tab4;
-  background-color: #9966ff;
-}
-
 .check_box {
   grid-area: check_box;
   background-color: #ff33ff;
