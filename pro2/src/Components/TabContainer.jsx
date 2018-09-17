@@ -16,7 +16,7 @@ class TabContainer extends Component {
             onClick={this.props.onClick}
             value={tab.value}
             imgurl={
-              "public/ContentFiles/Pictures/" +
+              "ContentFiles/Pictures/" +
               this.props.currentImg +
               +
               tab.id +
