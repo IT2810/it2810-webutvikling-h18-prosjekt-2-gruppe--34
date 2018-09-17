@@ -13,7 +13,7 @@ class Group extends Component {
             key={btn.id}
             id={btn.id}
             onChange={btn.onPicChangeCategory}
-            onImgClick={this.props.onImgClick}
+            onClick={this.props.onClick}
           />
         ))}
       </div>

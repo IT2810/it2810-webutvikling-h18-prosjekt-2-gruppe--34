@@ -27,7 +27,7 @@ class App extends Component {
 
   constructor() {
     super();
-    this.onImgClick = this.onImgClick.bind(this);
+    this.onClick = this.onClick.bind(this);
     this.onPicChangeCategory = this.onPicChangeCategory.bind(this); //binder til APP state!
   }
 
@@ -35,16 +35,14 @@ class App extends Component {
     this.setState({ currentImg: category });
   }
 
-  onImgClick(e) {
-    this.setState({ currentImg: e.target.id });
-  }
-
-  onQuoteClick(e) {
-    this.setState({ currentQuote: e.target.id });
-  }
-
-  onSoundClick(e) {
-    this.setState({ currentSound: e.target.id });
+  onClick(e) {
+    if (e.target.name === "img") {
+      this.setState({ currentImg: e.target.id });
+    } else if (e.target.name === "txt") {
+      this.setState({ currentQuote: e.target.id });
+    } else if (e.target.name === "sound") {
+      this.setState({ currentSound: e.target.id });
+    }
   }
 
   render() {
@@ -61,17 +59,17 @@ class App extends Component {
         <Group
           btns={this.state.imageBtns}
           onChange={this.onPicChangeCategory}
-          onImgClick={this.onImgClick}
+          onClick={this.onClick}
         />
         <Group
           btns={this.state.quoteBtns}
           onChange={this.onPicChangeCategory}
-          onQuoteClick={this.onQuoteClick}
+          onClick={this.onClick}
         />
         <Group
           btns={this.state.soundBtns}
           onChange={this.onPicChangeCategory}
-          onSoundClick={this.onSoundClick}
+          onClick={this.onClick}
         />
       </React.Fragment>
     );
