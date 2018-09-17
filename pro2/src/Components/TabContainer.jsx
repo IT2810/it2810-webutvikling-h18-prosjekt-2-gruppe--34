@@ -7,17 +7,20 @@ class TabContainer extends Component {
   render() {
     const { tabs } = this.props;
     return (
-      <div className="tabbRow">
+      <div className="tabRow">
         {tabs.map(tab => (
           <Tab
             key={tab.id}
             tab={tab}
             id={tab.id}
+            onClick={this.props.onClick}
+            value={tab.value}
             imgurl={
-              "public/ContentFiles/Images/" +
+              "public/ContentFiles/Pictures/" +
               this.props.currentImg +
-              "/" +
-              tab.id
+              +
+              tab.id +
+              ".svg"
             }
             soundurl={
               "public/ContentFiles/Sounds/" +
@@ -32,7 +35,7 @@ class TabContainer extends Component {
               tab.id
             }
           />
-        ))}
+      ))}
       </div>
     );
   }

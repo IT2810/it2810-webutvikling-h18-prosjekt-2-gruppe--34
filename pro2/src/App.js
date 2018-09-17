@@ -11,9 +11,9 @@ class App extends Component {
     currentSound: null,
     currentTab: 1,
     imageBtns: [
-      { id: 1, name: "img" },
-      { id: 2, name: "img" },
-      { id: 3, name: "img" }
+      { id: "animal", name: "img" },
+      { id: "food", name: "img"},
+      { id: "internet", name: "img" }
     ],
     quoteBtns: [
       { id: 4, name: "txt" },
@@ -35,16 +35,16 @@ class App extends Component {
 
   constructor() {
     super();
-    this.onClick = this.onClick.bind(this);
+    this.onMediaClick = this.onMediaClick.bind(this);
     this.tabPicker = this.tabPicker.bind(this);
-    this.onPicChangeCategory = this.onPicChangeCategory.bind(this); //binder til APP state!
+    /*this.onPicChangeCategory = this.onPicChangeCategory.bind(this); //binder til APP state!*/
   }
-
+/*
   onPicChangeCategory(category) {
     this.setState({ currentImg: category });
   }
-
-  onClick(e) {
+*/
+  onMediaClick(e) {
     if (e.target.name === "img") {
       this.setState({ currentImg: e.target.id });
     } else if (e.target.name === "txt") {
@@ -55,7 +55,15 @@ class App extends Component {
   }
 
   tabPicker(e) {
+    if (e.target.id === this.currentTab) {
+          console.log("Du er i den tab'en");
+    }
     this.setState({ currentTab: e.target.id });
+    console.log(e.target.id)
+  }
+
+  showTab(id){
+
   }
 
   render() {
@@ -66,23 +74,25 @@ class App extends Component {
         <div>
           <div className="Tab" />
         </div>
+        <div className="box">BILDE</div>
         <p>CurrentImg: {this.state.currentImg}</p>
         <p>CurrentQuote: {this.state.currentQuote}</p>
         <p>currentSound: {this.state.currentSound}</p>
+        <p>CurrentTab: {this.state.currentTab}</p>
         <Group
           btns={this.state.imageBtns}
           onChange={this.onPicChangeCategory}
-          onClick={this.onClick}
+          onClick={this.onMediaClick}
         />
         <Group
           btns={this.state.quoteBtns}
           onChange={this.onPicChangeCategory}
-          onClick={this.onClick}
+          onClick={this.onMediaClick}
         />
         <Group
           btns={this.state.soundBtns}
           onChange={this.onPicChangeCategory}
-          onClick={this.onClick}
+          onClick={this.onMediaClick}
         />
 
         <TabContainer
@@ -90,6 +100,7 @@ class App extends Component {
           currentImg={this.state.currentImg}
           currentSound={this.state.currentSound}
           currentQuote={this.state.currentQuote}
+          onClick={this.tabPicker}
         />
       </React.Fragment>
     );
