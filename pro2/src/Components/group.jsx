@@ -2,8 +2,18 @@ import React, { Component } from "react";
 
 class Group extends Component {
   render() {
+    const type = this.props.name;
+    let title;
+    if (type === "img") {
+      title = "Image:";
+    } else if (type === "txt") {
+      title = "Quote:";
+    } else {
+      title = "Sound:";
+    }
     return (
       <div className={"group" + this.props.name}>
+        <p>{title}</p>
         {this.props.btns.map(btn => (
           <label>
             {btn.id}
