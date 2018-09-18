@@ -6,7 +6,7 @@ class Tab extends Component {
     render() {
       return (
         <div id={this.props.id}>
-          <button className="button" onClick={this.props.onClick} id={this.props.id}>{this.props.id}</button>
+          <div className="button" onClick={this.props.onClick} id={this.props.id}>{this.props.id}</div>
         </div>
       );
     }

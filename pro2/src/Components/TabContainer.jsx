@@ -1,19 +1,10 @@
 import React, { Component } from "react";
 import Tab from "./Tab.jsx";
-import Exhibition from "./Exhibition";
-import $ from "jquery";
-
 
 class TabContainer extends Component {
     constructor() {
         super();
-
     }
-
-
-
-  //TODO: Bytte media ved trykk.
-
 
   render() {
     const { tabs } = this.props;
