@@ -12,9 +12,10 @@ class Group extends Component {
             key={btn.id}
             id={btn.id}
            /* onChange={btn.onPicChangeCategory} */
-            onClick={this.props.onClick}
+            onClick={this.props.onMediaClick}
           />
           </label>
+
         ))}
       </div>
     );

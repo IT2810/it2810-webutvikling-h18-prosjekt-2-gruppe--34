@@ -4,6 +4,7 @@ import "./index.css";
 import Group from "./Components/group";
 import TabContainer from "./Components/TabContainer.jsx";
 import $ from "jquery";
+import Exhibition from "./Components/Exhibition";
 
 class App extends Component {
   state = {
@@ -14,7 +15,7 @@ class App extends Component {
     svg: "bilde",
     text: [],
     imageBtns: [
-      { id: "animal", name: "img" },
+      { id: "animal", name: "img"},
       { id: "food", name: "img"},
       { id: "internet", name: "img" }
     ],
@@ -52,23 +53,19 @@ class App extends Component {
   onMediaClick(e) {
     if (e.target.name === "img") {
       this.setState({ currentImg: e.target.id });
-        console.log("ONMEDIACLICK");
-      this.loadPicture();
     } else if (e.target.name === "txt") {
       this.setState({ currentQuote: e.target.id });
-      this.loadText();
     } else if (e.target.name === "sound") {
       this.setState({ currentSound: e.target.id });
-      this.loadSound();
     }
   }
 
     tabPicker(e) {
-        if (e.target.id === this.currentTab) {
-            console.log("Du er i den tab'en");
-        }
-        this.setState({ currentTab: e.target.id });
-        console.log(e.target.id)
+        this.setState({ currentTab: e.target.id }, function () {
+            this.loadPicture();
+            this.loadText();
+        });
+
     }
 
     async loadPicture() {
@@ -76,17 +73,15 @@ class App extends Component {
         const response = await fetch(url, {});
         const text = await response.text();
         this.setState({svg: text});
-        console.log("LOADPICTURE");
+        console.log(url);
     }
 
-    loadText() {
+    async loadText() {
        const url = "ContentFiles/Quotes/" + this.state.currentQuote + this.state.currentTab + ".json"
-        $.getJSON(url, function (data) {
-            let text2 = data.text;
-            $(document).ready(function(){
-                this.setState({text: text2});
-            }.bind(this));
-        }.bind(this));
+        const response = await fetch(url, {});
+        const text = await response.json();
+        this.setState({text: text.text});
+        console.log(url);
     }
 
     loadSound() {
@@ -98,7 +93,6 @@ class App extends Component {
   }
 
   render() {
-    console.log("App - rendered");
     return (
       <React.Fragment>
         <h1>Welcome</h1>
@@ -112,15 +106,15 @@ class App extends Component {
         <p>CurrentTab: {this.state.currentTab}</p>
         <Group
           btns={this.state.imageBtns}
-          onClick={this.onMediaClick}
+          onMediaClick={this.onMediaClick}
         />
         <Group
           btns={this.state.quoteBtns}
-          onClick={this.onMediaClick}
+          onMediaClick={this.onMediaClick}
         />
         <Group
           btns={this.state.soundBtns}
-          onClick={this.onMediaClick}
+          onMediaClick={this.onMediaClick}
         />
         <TabContainer
           tabs={this.state.tabs}
@@ -135,6 +129,11 @@ class App extends Component {
           svg={this.state.svg}
           text={this.state.text}
         />
+          <Exhibition
+              svg={this.state.svg}
+              text={this.state.text}
+
+          />
 
       </React.Fragment>
     );

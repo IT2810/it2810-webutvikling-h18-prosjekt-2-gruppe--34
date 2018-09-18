@@ -28,11 +28,7 @@ class TabContainer extends Component {
             value={tab.value}
           />
       ))}
-          <Exhibition   soundurl="URL"
-                        svg={this.props.svg}
-                        text={this.props.text}
 
-          />
 
       </div>
     );
