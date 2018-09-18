@@ -14,8 +14,8 @@ class App extends Component {
     svg: "bilde",
     text: [],
     imageBtns: [
-      { id: "animal", name: "img"},
-      { id: "food", name: "img"},
+      { id: "animal", name: "img" },
+      { id: "food", name: "img" },
       { id: "internet", name: "img" }
     ],
     quoteBtns: [
@@ -43,7 +43,7 @@ class App extends Component {
 
     /*this.onPicChangeCategory = this.onPicChangeCategory.bind(this); //binder til APP state!*/
   }
-/*
+  /*
   onPicChangeCategory(category) {
     this.setState({ currentImg: category });
   }
@@ -51,66 +51,79 @@ class App extends Component {
 
   onMediaClick(e) {
     if (e.target.name === "img") {
-      this.setState({ currentImg: e.target.id }, function () {
-          this.loadPicture();
-          this.loadText();
+      this.setState({ currentImg: e.target.id }, function() {
+        this.loadPicture();
+        this.loadText();
       });
     } else if (e.target.name === "txt") {
-      this.setState({ currentQuote: e.target.id }, function () {
-          this.loadPicture();
-          this.loadText();
+      this.setState({ currentQuote: e.target.id }, function() {
+        this.loadPicture();
+        this.loadText();
       });
     } else if (e.target.name === "sound") {
-      this.setState({ currentSound: e.target.id }, function () {
-          this.loadPicture();
-          this.loadText();
+      this.setState({ currentSound: e.target.id }, function() {
+        this.loadPicture();
+        this.loadText();
       });
     }
   }
 
-    tabPicker(e) {
-        this.setState({ currentTab: e.target.id }, function () {
-            this.loadPicture();
-            this.loadText();
-        });
+  tabPicker(e) {
+    this.setState({ currentTab: e.target.id }, function() {
+      this.loadPicture();
+      this.loadText();
+    });
+  }
 
+  async loadPicture() {
+    const key = this.state.currentImg + this.state.currentTab;
+    const cachedHits = sessionStorage.getItem(key);
+    if (cachedHits) {
+      this.setState({ svg: cachedHits });
+      return;
     }
+    const url = "ContentFiles/Pictures/" + key + ".svg";
+    const response = await fetch(url, {});
+    const text = await response.text();
+    this.setState({ svg: text });
+    sessionStorage.setItem(key, text);
+    console.log(url);
+  }
 
-    async loadPicture() {
-        const url = "ContentFiles/Pictures/" + this.state.currentImg + this.state.currentTab + ".svg";
-        const response = await fetch(url, {});
-        const text = await response.text();
-        this.setState({svg: text});
-        console.log(url);
+  async loadText() {
+    const key = this.state.currentQuote + this.state.currentTab;
+    const cachedHits = sessionStorage.getItem(key);
+    if (cachedHits) {
+      this.setState({ text: cachedHits });
+      return;
     }
+    const url = "ContentFiles/Quotes/" + key + ".json";
+    const response = await fetch(url, {});
+    const text = await response.json();
+    this.setState({ text: text.text });
+    sessionStorage.setItem(key, text);
+    console.log(url);
+  }
 
-    async loadText() {
-       const url = "ContentFiles/Quotes/" + this.state.currentQuote + this.state.currentTab + ".json"
-        const response = await fetch(url, {});
-        const text = await response.json();
-        this.setState({text: text.text});
-        console.log(url);
-    }
-
-    loadSound() {
-        console.log("Do something here");
-    }
+  loadSound() {
+    console.log("Do something here");
+  }
 
   render() {
     return (
       <div className="App">
-      <div className="header">
+        <div className="header">
           <h1>utstilling</h1>
-      </div>
-      <React.Fragment>
-        <div className="Tab"></div>
-        <div className="box">
-        <p>CurrentImg: {this.state.currentImg}</p>
-        <p>CurrentQuote: {this.state.currentQuote}</p>
-        <p>currentSound: {this.state.currentSound}</p>
-        <p>CurrentTab: {this.state.currentTab}</p>
         </div>
-        <div className="check_box">
+        <React.Fragment>
+          <div className="Tab" />
+          <div className="box">
+            <p>CurrentImg: {this.state.currentImg}</p>
+            <p>CurrentQuote: {this.state.currentQuote}</p>
+            <p>currentSound: {this.state.currentSound}</p>
+            <p>CurrentTab: {this.state.currentTab}</p>
+          </div>
+          <div className="check_box">
             <Group
               btns={this.state.imageBtns}
               onMediaClick={this.onMediaClick}
@@ -123,23 +136,20 @@ class App extends Component {
               btns={this.state.soundBtns}
               onMediaClick={this.onMediaClick}
             />
-        </div>
-        <TabContainer
-          tabs={this.state.tabs}
-          onClick={this.tabPicker}
-          loadSound={this.loadSound}
-          loadText={this.loadText}
-          loadPicture={this.loadPicture}
-          svg={this.state.svg}
-          text={this.state.text}
-        />
-      <div className="content">
-        <Exhibition
-          svg={this.state.svg}
-          text={this.state.text}
+          </div>
+          <TabContainer
+            tabs={this.state.tabs}
+            onClick={this.tabPicker}
+            loadSound={this.loadSound}
+            loadText={this.loadText}
+            loadPicture={this.loadPicture}
+            svg={this.state.svg}
+            text={this.state.text}
           />
-      </div>
-      </React.Fragment>
+          <div className="content">
+            <Exhibition svg={this.state.svg} text={this.state.text} />
+          </div>
+        </React.Fragment>
       </div>
     );
   }
