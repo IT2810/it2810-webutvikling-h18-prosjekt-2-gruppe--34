@@ -3,7 +3,6 @@ import "./App.css";
 import "./index.css";
 import Group from "./Components/group";
 import TabContainer from "./Components/TabContainer.jsx";
-import $ from "jquery";
 import Exhibition from "./Components/Exhibition";
 
 class App extends Component {
@@ -52,11 +51,20 @@ class App extends Component {
 
   onMediaClick(e) {
     if (e.target.name === "img") {
-      this.setState({ currentImg: e.target.id });
+      this.setState({ currentImg: e.target.id }, function () {
+          this.loadPicture();
+          this.loadText();
+      });
     } else if (e.target.name === "txt") {
-      this.setState({ currentQuote: e.target.id });
+      this.setState({ currentQuote: e.target.id }, function () {
+          this.loadPicture();
+          this.loadText();
+      });
     } else if (e.target.name === "sound") {
-      this.setState({ currentSound: e.target.id });
+      this.setState({ currentSound: e.target.id }, function () {
+          this.loadPicture();
+          this.loadText();
+      });
     }
   }
 
@@ -90,29 +98,31 @@ class App extends Component {
 
   render() {
     return (
+      <div className="App">
+      <div className="header">
+          <h1>utstilling</h1>
+      </div>
       <React.Fragment>
-        <h1>Welcome</h1>
-        <div>
-          <div className="Tab" />
-        </div>
-        <div className="box">BILDE</div>
+        <div className="Tab"></div>
+        <div className="box">
         <p>CurrentImg: {this.state.currentImg}</p>
         <p>CurrentQuote: {this.state.currentQuote}</p>
         <p>currentSound: {this.state.currentSound}</p>
         <p>CurrentTab: {this.state.currentTab}</p>
+        </div>
         <div className="check_box">
-        <Group
-          btns={this.state.imageBtns}
-          onMediaClick={this.onMediaClick}
-        />
-        <Group
-          btns={this.state.quoteBtns}
-          onMediaClick={this.onMediaClick}
-        />
-        <Group
-          btns={this.state.soundBtns}
-          onMediaClick={this.onMediaClick}
-        />
+            <Group
+              btns={this.state.imageBtns}
+              onMediaClick={this.onMediaClick}
+            />
+            <Group
+              btns={this.state.quoteBtns}
+              onMediaClick={this.onMediaClick}
+            />
+            <Group
+              btns={this.state.soundBtns}
+              onMediaClick={this.onMediaClick}
+            />
         </div>
         <TabContainer
           tabs={this.state.tabs}
@@ -130,6 +140,7 @@ class App extends Component {
           />
       </div>
       </React.Fragment>
+      </div>
     );
   }
 }

@@ -2,15 +2,14 @@
   .App {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-auto-rows: minmax(100px, auto);
+    grid-auto-rows: auto;
     grid-template-areas:
       "header header header header header"
-      "tabRow tabRow tabRow tabRow ."
+      "tab1 tab tab tab ."
       "content content content content check_box"
       "content content content content check_box"
       "content content content content check_box"
-      "content content content content ."
-      "footer footer footer footer footer";
+      "content content content content .";
     padding: 0;
     font-family: sans-serif;
     width: 100%;
@@ -23,12 +22,9 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-auto-rows: minmax(100px, auto);
     grid-template-areas:
-      "header header header header"
-      "tabRow tabRow tabRow tabRow"
       "content content content content"
       "content content content content"
-      "check_box check_box check_box check_box"
-      "footer footer footer footer";
+      "check_box check_box check_box check_box";
     padding: 0;
     font-family: sans-serif;
     width: 100%;
@@ -37,11 +33,15 @@
 
 .header {
   grid-area: header;
-  display: inline;
-  margin: 0;
+  background-color: #ffffff;
   text-align: center;
-  background-color: #b2b4b5;
 }
+
+.tabRow #1{
+  grid-area: tab1;
+  display: inline;
+}
+
 
 .content {
   grid-area: content;
@@ -51,18 +51,15 @@
 
 .exhibition {
   width: 100%;
-  height: 100%;
+  height: 40%;
+  min-height:500px;
 }
 
 .imgBox {
-  height: 50%;
+  height: 100%;
   width: 50%;
   margin: auto auto auto auto;
-}
-
-.footer {
-  grid-area: footer;
-  text-align: center;
+  border: 1px solid;
 }
 
 .check_box {
@@ -71,9 +68,6 @@
   text-align: center;
 }
 
-.button {
-  grid-area: tabRow;
-}
 
 .labels {
   width: 300px;
