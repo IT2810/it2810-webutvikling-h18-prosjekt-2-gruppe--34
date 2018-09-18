@@ -100,6 +100,7 @@ class App extends Component {
         <p>CurrentQuote: {this.state.currentQuote}</p>
         <p>currentSound: {this.state.currentSound}</p>
         <p>CurrentTab: {this.state.currentTab}</p>
+        <div className="check_box">
         <Group
           btns={this.state.imageBtns}
           onMediaClick={this.onMediaClick}
@@ -112,6 +113,7 @@ class App extends Component {
           btns={this.state.soundBtns}
           onMediaClick={this.onMediaClick}
         />
+        </div>
         <TabContainer
           tabs={this.state.tabs}
           onClick={this.tabPicker}
@@ -121,12 +123,12 @@ class App extends Component {
           svg={this.state.svg}
           text={this.state.text}
         />
-          <Exhibition
-              svg={this.state.svg}
-              text={this.state.text}
-
+      <div className="content">
+        <Exhibition
+          svg={this.state.svg}
+          text={this.state.text}
           />
-
+      </div>
       </React.Fragment>
     );
   }

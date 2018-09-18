@@ -49,16 +49,15 @@
   text-align: center;
 }
 
-.picture_box {
-  border: 0.5em solid black;
-  height: 40%;
-  width: inherit;
+.exhibition {
+  width: 100%;
+  height: 100%;
 }
 
-.quote_box {
-  background-color: pink;
-  height: 25%;
-  width: inherit;
+.imgBox {
+  height: 50%;
+  width: 50%;
+  margin: auto auto auto auto;
 }
 
 .footer {
@@ -72,10 +71,6 @@
   text-align: center;
 }
 
-img.resize {
-  width: 100%; /* you can use % */
-  height: auto;
-}
 .button {
   grid-area: tabRow;
 }
