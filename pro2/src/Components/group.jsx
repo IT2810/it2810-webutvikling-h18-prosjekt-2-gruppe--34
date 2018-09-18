@@ -2,19 +2,20 @@ import React, { Component } from "react";
 
 class Group extends Component {
   render() {
-    console.log(this.props.btns);
-
     return (
-      <div>
+      <div className="labels">
         {this.props.btns.map(btn => (
-          <input
+          <label>{btn.id}
+            <input
             name={btn.name}
             type="radio"
             key={btn.id}
             id={btn.id}
-            onChange={btn.onPicChangeCategory}
-            onClick={this.props.onClick}
+           /* onChange={btn.onPicChangeCategory} */
+            onClick={this.props.onMediaClick}
           />
+          </label>
+
         ))}
       </div>
     );
