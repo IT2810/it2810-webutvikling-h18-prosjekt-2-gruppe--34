@@ -88,10 +88,6 @@ class App extends Component {
         console.log("Do something here");
     }
 
-  showTab(id){
-
-  }
-
   render() {
     return (
       <React.Fragment>
@@ -118,10 +114,6 @@ class App extends Component {
         />
         <TabContainer
           tabs={this.state.tabs}
-          currentImg={this.state.currentImg}
-          currentSound={this.state.currentSound}
-          currentQuote={this.state.currentQuote}
-          currentTab={this.state.currentTab}
           onClick={this.tabPicker}
           loadSound={this.loadSound}
           loadText={this.loadText}
