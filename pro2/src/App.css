@@ -18,25 +18,19 @@
   margin-bottom: 20px;
 }
 
-.tabRow > div {
-  height: 20px;
-  border-radius: 10px;
-}
-
 .check_box {
   grid-template-areas: "groupimg grouptxt groupsound";
 }
 
-/*
-  .media {
-    border: 1px solid red;
-  }
-*/
+.media {
+  grid-area: media;
+}
+
 .imgBox {
   width: 50%;
   margin-left: auto;
   margin-right: auto;
-  height: 150px; /*Slett denne om quote skal følge bilde i høyde*/
+  height: 50%; /*Slett denne om quote skal følge bilde i høyde*/
 }
 
 svg {
@@ -64,12 +58,13 @@ svg {
 }
 
 .groupsound  {
-  grid-area: gridsound;
+  grid-area: groupsound;
 }
 
 .check_box {
   grid-area: cb;
-  border: 1px solid black;
+  border-radius: 1em;
+  background-color: lightblue;
   display: grid;
 }
 
@@ -91,9 +86,15 @@ svg {
 
 /* all tabs */
 div.tabRow > div {
-  border: 1px solid black;
+  background-color: lightblue;
   margin: 1em;
   text-align: center;
+  height: 20px;
+  border-radius: 1em;
+}
+
+div.tabRow > div:active {
+  background-color: blue;
 }
 
 div.tabRow > div:hover {
@@ -157,7 +158,7 @@ label > input {
 
   .imgBox {
     width: 100%;
-    height: 500px;
+    height: 50%;
   }
 
   svg {
@@ -170,4 +171,34 @@ label > input {
 
 /* Desktop*/
 @media screen and (min-width: 1200px) {
+  .App {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: minmax(100px, auto);
+    grid-template-areas:
+      "header header header header header header"
+      "tabs tabs tabs tabs tabs tabs"
+      "media media media media cb cb"
+      "media media media media cb cb"
+      "media media media media . .";
+  }
+
+  .check_box {
+    grid-template-areas:
+      "groupimg"
+      "grouptxt"
+      "groupsound";
+    width: 250px;
+    margin-right: 25px;
+  }
+
+  svg {
+    max-width: 800px;
+    max-height: 450px;
+    /* center image is missing */
+  }
+
+  .imgBox {
+    height: 50%;
+  }
 }

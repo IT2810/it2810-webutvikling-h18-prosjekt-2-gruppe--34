@@ -101,7 +101,7 @@ class App extends Component {
     const response = await fetch(url, {});
     const text = await response.json();
     this.setState({ text: text.text });
-    sessionStorage.setItem(key, text);
+    sessionStorage.setItem(key, text.text);
     console.log(url);
   }
 
