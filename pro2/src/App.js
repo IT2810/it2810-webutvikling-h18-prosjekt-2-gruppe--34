@@ -9,10 +9,11 @@ class App extends Component {
   state = {
     currentImg: "animal",
     currentQuote: "einstein",
-    currentSound: null,
+    currentSound: "random1",
     currentTab: 1,
     svg: "bilde",
     text: [],
+    sound: "not found",
     imageBtns: [
       { id: "animal", name: "img" },
       { id: "food", name: "img" },
@@ -24,9 +25,9 @@ class App extends Component {
       { id: "michaelscott", name: "txt" }
     ],
     soundBtns: [
-      { id: 7, name: "sound" },
-      { id: 8, name: "sound" },
-      { id: 9, name: "sound" }
+      { id: "random1", name: "sound" },
+      { id: "random2", name: "sound" },
+      { id: "random3", name: "sound" }
     ],
     tabs: [
       { id: 1, soundId: 0, imageId: 0, quoteId: 0 },
@@ -54,16 +55,19 @@ class App extends Component {
       this.setState({ currentImg: e.target.id }, function() {
         this.loadPicture();
         this.loadText();
+        this.loadSound();
       });
     } else if (e.target.name === "txt") {
       this.setState({ currentQuote: e.target.id }, function() {
         this.loadPicture();
         this.loadText();
+        this.loadSound();
       });
     } else if (e.target.name === "sound") {
       this.setState({ currentSound: e.target.id }, function() {
         this.loadPicture();
         this.loadText();
+        this.loadSound();
       });
     }
   }
@@ -72,6 +76,7 @@ class App extends Component {
     this.setState({ currentTab: e.target.id }, function() {
       this.loadPicture();
       this.loadText();
+      this.loadSound();
     });
   }
 
@@ -106,8 +111,14 @@ class App extends Component {
   }
 
   loadSound() {
-    console.log("Do something here");
+    const url = "ContentFiles/Sounds/" + this.state.currentSound + "/sound" + this.state.currentTab + ".mp3";
+    console.log(url);
+    this.setState({ sound: url }, function() {
+      this.refs.audio.pause();
+      this.refs.audio.load();
+    });
   }
+
 
   render() {
     return (
@@ -145,6 +156,7 @@ class App extends Component {
           />
           <div className="media">
             <Exhibition svg={this.state.svg} text={this.state.text} />
+            <audio ref="audio" loop controls><source src={this.state.sound} type="audio/mp3"/></audio>
           </div>
         </React.Fragment>
       </div>
