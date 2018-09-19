@@ -1,0 +1,204 @@
+/* Mobile first */
+.App {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "header header header header"
+    "cb cb cb cb"
+    "tabs tabs tabs tabs"
+    "media media media media";
+  /*footer*/
+}
+
+.tabRow {
+  display: grid;
+  grid-template-areas: "tab1 tab2 tab3 tab4";
+  border-bottom: 1px solid black;
+  margin-bottom: 20px;
+}
+
+.check_box {
+  grid-template-areas: "groupimg grouptxt groupsound";
+}
+
+.media {
+  grid-area: media;
+}
+
+.imgBox {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 50%; /*Slett denne om quote skal følge bilde i høyde*/
+}
+
+svg {
+  max-width: 200px;
+  max-height: 150px;
+  margin-left: 20px; /* center image is missing */
+  margin-right: auto;
+}
+
+.quotebox {
+  border-top: 1px solid black;
+  text-align: center;
+}
+
+.check_box > div > p {
+  text-align: center;
+}
+
+.groupimg {
+  grid-area: groupimg;
+}
+
+.grouptxt {
+  grid-area: grouptxt;
+}
+
+.groupsound  {
+  grid-area: groupsound;
+}
+
+.check_box {
+  grid-area: cb;
+  border-radius: 1em;
+  background-color: lightblue;
+  display: grid;
+}
+
+.check_box > div > label {
+  display: block;
+  text-align: right;
+}
+
+.tabRow {
+  grid-area: tabs;
+}
+
+.header {
+  grid-area: header;
+  background-color: #ffffff;
+  text-align: center;
+  width: 100%;
+}
+
+/* all tabs */
+div.tabRow > div {
+  background-color: lightblue;
+  margin: 1em;
+  text-align: center;
+  height: 20px;
+  border-radius: 1em;
+}
+
+div.tabRow > div:active {
+  background-color: blue;
+}
+
+div.tabRow > div:hover {
+  cursor: pointer;
+}
+
+/*TODO: Add an active feat. */
+
+.tab1 {
+  grid-area: tab1;
+}
+
+.tab2 {
+  grid-area: tab2;
+}
+
+.tab3 {
+  grid-area: tab3;
+}
+
+.tab4 {
+  grid-area: tab4;
+}
+
+label > input {
+  cursor: pointer;
+}
+
+/* Tablet size */
+@media screen and (min-width: 767px) {
+  .App {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header header header header"
+      "cb cb cb cb "
+      "tabs tabs tabs tabs"
+      "media media media media";
+    /*footer*/
+  }
+
+  .tabRow {
+    display: grid;
+    grid-template-areas: "tab1 tab2 tab3 tab4";
+  }
+  /* tabs */
+  .tabRow > div {
+    height: 100px;
+    border-radius: 10px;
+  }
+
+  .check_box {
+    display: grid;
+    grid-template-areas: "groupimg grouptxt groupsound";
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+  }
+
+  .imgBox {
+    width: 100%;
+    height: 50%;
+  }
+
+  svg {
+    max-width: 500px;
+    max-height: 100%;
+    margin-left: 25%;
+    /* center image is missing */
+  }
+}
+
+/* Desktop*/
+@media screen and (min-width: 1200px) {
+  .App {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: minmax(100px, auto);
+    grid-template-areas:
+      "header header header header header header"
+      "tabs tabs tabs tabs tabs tabs"
+      "media media media media cb cb"
+      "media media media media cb cb"
+      "media media media media . .";
+  }
+
+  .check_box {
+    grid-template-areas:
+      "groupimg"
+      "grouptxt"
+      "groupsound";
+    width: 250px;
+    margin-right: 25px;
+  }
+
+  svg {
+    max-width: 800px;
+    max-height: 450px;
+    /* center image is missing */
+  }
+
+  .imgBox {
+    height: 50%;
+  }
+}
