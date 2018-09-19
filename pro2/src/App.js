@@ -101,7 +101,7 @@ class App extends Component {
     const response = await fetch(url, {});
     const text = await response.json();
     this.setState({ text: text.text });
-    sessionStorage.setItem(key, text);
+    sessionStorage.setItem(key, text.text);
     console.log(url);
   }
 
@@ -113,30 +113,27 @@ class App extends Component {
     return (
       <div className="App">
         <div className="header">
-          <h1>utstilling</h1>
+          <h1>Utstilling</h1>
         </div>
         <React.Fragment>
-          <div className="Tab" />
-          <div className="box">
-            <p>CurrentImg: {this.state.currentImg}</p>
-            <p>CurrentQuote: {this.state.currentQuote}</p>
-            <p>currentSound: {this.state.currentSound}</p>
-            <p>CurrentTab: {this.state.currentTab}</p>
-          </div>
           <div className="check_box">
             <Group
               btns={this.state.imageBtns}
               onMediaClick={this.onMediaClick}
+              name="img"
             />
             <Group
               btns={this.state.quoteBtns}
               onMediaClick={this.onMediaClick}
+              name="txt"
             />
             <Group
               btns={this.state.soundBtns}
               onMediaClick={this.onMediaClick}
+              name="sound"
             />
           </div>
+
           <TabContainer
             tabs={this.state.tabs}
             onClick={this.tabPicker}
@@ -146,7 +143,7 @@ class App extends Component {
             svg={this.state.svg}
             text={this.state.text}
           />
-          <div className="content">
+          <div className="media">
             <Exhibition svg={this.state.svg} text={this.state.text} />
           </div>
         </React.Fragment>

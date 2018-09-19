@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import Tab from "./Tab.jsx";
 
 class TabContainer extends Component {
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 
   render() {
     const { tabs } = this.props;
@@ -17,10 +17,9 @@ class TabContainer extends Component {
             id={tab.id}
             onClick={this.props.onClick}
             value={tab.value}
+            className={"tab" + tab.id}
           />
-      ))}
-
-
+        ))}
       </div>
     );
   }
