@@ -3,7 +3,7 @@ import "./App.css";
 import "./index.css";
 import Group from "./Components/group";
 import TabContainer from "./Components/TabContainer.jsx";
-import Exhibition from "./Components/Exhibition";
+import Exhibition from "./Components/exhibition";
 
 class App extends Component {
   state = {
@@ -111,14 +111,18 @@ class App extends Component {
   }
 
   loadSound() {
-    const url = "ContentFiles/Sounds/" + this.state.currentSound + "/sound" + this.state.currentTab + ".mp3";
+    const url =
+      "ContentFiles/Sounds/" +
+      this.state.currentSound +
+      "/sound" +
+      this.state.currentTab +
+      ".mp3";
     console.log(url);
     this.setState({ sound: url }, function() {
       this.refs.audio.pause();
       this.refs.audio.load();
     });
   }
-
 
   render() {
     return (
@@ -156,7 +160,9 @@ class App extends Component {
           />
           <div className="media">
             <Exhibition svg={this.state.svg} text={this.state.text} />
-            <audio ref="audio" loop controls><source src={this.state.sound} type="audio/mp3"/></audio>
+            <audio ref="audio" loop controls>
+              <source src={this.state.sound} type="audio/mp3" />
+            </audio>
           </div>
         </React.Fragment>
       </div>
