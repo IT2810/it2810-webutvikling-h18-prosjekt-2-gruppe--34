@@ -129,7 +129,16 @@ class App extends Component {
       <div className="App">
         <div className="header">
           <h1>Utstilling</h1>
+          <span id="audioControls">
+            <button onClick={() => document.getElementById("audio").play()}>
+              Play
+            </button>
+            <button onClick={() => document.getElementById("audio").pause()}>
+              Pause
+            </button>
+          </span>
         </div>
+
         <React.Fragment>
           <div className="check_box">
             <Group
@@ -163,14 +172,6 @@ class App extends Component {
             <audio id="audio" ref="audio" loop>
               <source src={this.state.sound} type="audio/mp3" />
             </audio>
-            <div id="audioControls">
-              <button onClick={() => document.getElementById("audio").play()}>
-                Play
-              </button>
-              <button onClick={() => document.getElementById("audio").pause()}>
-                Pause
-              </button>
-            </div>
           </div>
         </React.Fragment>
       </div>
