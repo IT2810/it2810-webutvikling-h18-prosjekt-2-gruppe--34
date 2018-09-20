@@ -16,6 +16,19 @@
   /*footer*/
 }
 
+#audioControls {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#audioControls > button {
+  border: none;
+  margin: 2px;
+  font-size: 0.8em;
+  padding: 0.5em;
+}
+
 .tabRow {
   display: grid;
   grid-template-areas: "tab1 tab2 tab3 tab4";
@@ -30,6 +43,10 @@
 .media {
   grid-area: media;
   height: 100%;
+}
+
+.exhibition {
+  height: 80%;
 }
 
 .imgBox {
@@ -75,10 +92,6 @@ svg {
   bottom: 0;
   right: 0;
   left: 0;
-}
-
-.media {
-  height: 80%;
 }
 
 .check_box > div > p {
@@ -149,6 +162,14 @@ label > input {
 
 input[type="radio"] {
   background: black;
+}
+
+/*TODO: better here*/
+@media screen and (orientation: landscape) {
+  svg {
+    max-height: 100px;
+    margin-left: 30%;
+  }
 }
 
 /* Tablet size */
