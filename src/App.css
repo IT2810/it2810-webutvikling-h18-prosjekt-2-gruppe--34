@@ -16,11 +16,14 @@
   /*footer*/
 }
 
+.imgBox {
+  padding-top: 15px;
+}
+
 #audioControls {
-  width: 40%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
 }
 
 #audioControls > button {
@@ -93,6 +96,7 @@ svg {
   bottom: 0;
   right: 0;
   left: 0;
+  overflow-x: hidden;
 }
 
 .check_box > div > p {
@@ -120,9 +124,20 @@ svg {
   width: 100%;
   margin-top: -1em;
   margin-bottom: -1em;
+  display: grid;
+  grid-template-areas: "h1 buttons";
 }
-/* all tabs */
 
+div > h1 {
+  grid-area: h1;
+}
+
+#audioControls {
+  grid-area: buttons;
+  padding-top: 25px;
+}
+
+/* all tabs */
 div.tabRow > div {
   background-color: #9e9e9e;
   margin-top: 0.5em;
@@ -181,7 +196,8 @@ input[type="radio"] {
       "cb media tabs";
 
     grid-template-columns: 1fr 10fr 1fr;
-    grid-template-rows: 15% 30% 30% 30%;
+    grid-template-rows: minmax(10%, auto);
+    height: initial;
   }
 
   .check_box {
