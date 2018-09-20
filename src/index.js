@@ -3,6 +3,14 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
+import $ from "jquery";
+
+$(function() {
+  $(".tabRow div").on("click", function() {
+    $(".tabRow div.active").removeClass("active");
+    $(this).addClass("active");
+  });
+});
 
 ReactDOM.render(<App />, document.getElementById("root"));
 registerServiceWorker();

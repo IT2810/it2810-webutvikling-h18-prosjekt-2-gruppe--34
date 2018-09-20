@@ -20,10 +20,11 @@
   width: 40%;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
 
 #audioControls > button {
-  border: none;
+  border: 1px solid black;
   margin: 2px;
   font-size: 0.8em;
   padding: 0.5em;
@@ -32,7 +33,7 @@
 .tabRow {
   display: grid;
   grid-template-areas: "tab1 tab2 tab3 tab4";
-  border-bottom: 1px solid black;
+
   margin-bottom: 20px;
 }
 
@@ -127,7 +128,9 @@ div.tabRow > div {
   margin-top: 0.5em;
   border: 0.2px solid #414141;
   text-align: center;
-  height: 20px;
+  height: 40px;
+  line-height: 40px;
+  vertical-align: middle;
 }
 
 div.tabRow > div:active {
@@ -136,6 +139,10 @@ div.tabRow > div:active {
 
 div.tabRow > div:hover {
   cursor: pointer;
+}
+
+div.tabRow > div.active {
+  background-color: white;
 }
 
 /*TODO: Add an active feat. */
@@ -166,6 +173,39 @@ input[type="radio"] {
 
 /*TODO: better here*/
 @media screen and (orientation: landscape) {
+  .App {
+    grid-template-areas:
+      "cb header header"
+      "cb media tabs"
+      "cb media tabs"
+      "cb media tabs";
+
+    grid-template-columns: 1fr 10fr 1fr;
+    grid-template-rows: 15% 30% 30% 30%;
+  }
+
+  .check_box {
+    position: unset;
+    width: 120px;
+    grid-template-areas:
+      "groupimg"
+      "grouptxt"
+      "groupsound";
+  }
+
+  .tabRow {
+    min-width: 50px;
+    grid-template-areas:
+      "tab1"
+      "tab2"
+      "tab3"
+      "tab4";
+    border-bottom: none;
+  }
+
+  .quotebox {
+    margin: 0px 10px;
+  }
   svg {
     max-height: 100px;
     margin-left: 30%;
@@ -173,7 +213,7 @@ input[type="radio"] {
 }
 
 /* Tablet size */
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 814px) {
   .App {
     height: 100%;
     display: grid;
