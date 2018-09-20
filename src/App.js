@@ -15,7 +15,7 @@ class App extends Component {
     text: [],
     sound: "not found",
     imageBtns: [
-      { id: "animal", name: "img" },
+      { id: "animal", name: "img", className: "" },
       { id: "food", name: "img" },
       { id: "internet", name: "img" }
     ],
@@ -30,10 +30,10 @@ class App extends Component {
       { id: "random3", name: "sound" }
     ],
     tabs: [
-      { id: 1, soundId: 0, imageId: 0, quoteId: 0 },
-      { id: 2, soundId: 0, imageId: 0, quoteId: 0 },
-      { id: 3, soundId: 0, imageId: 0, quoteId: 0 },
-      { id: 4, soundId: 0, imageId: 0, quoteId: 0 }
+      { id: 1, clicked: false },
+      { id: 2, clicked: false },
+      { id: 3, clicked: false },
+      { id: 4, clicked: false }
     ]
   };
 
@@ -78,6 +78,7 @@ class App extends Component {
       this.loadText();
       this.loadSound();
     });
+    this.setState({ clicked: true });
   }
 
   async loadPicture() {
@@ -160,9 +161,17 @@ class App extends Component {
           />
           <div className="media">
             <Exhibition svg={this.state.svg} text={this.state.text} />
-            <audio ref="audio" loop controls>
+            <audio id="audio" ref="audio" loop>
               <source src={this.state.sound} type="audio/mp3" />
             </audio>
+            <div id="audioControls">
+              <button onClick={() => document.getElementById("audio").play()}>
+                Play
+              </button>
+              <button onClick={() => document.getElementById("audio").pause()}>
+                Pause
+              </button>
+            </div>
           </div>
         </React.Fragment>
       </div>
