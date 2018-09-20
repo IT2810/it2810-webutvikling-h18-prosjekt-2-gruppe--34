@@ -158,6 +158,7 @@ div.tabRow > div:hover {
 
 div.tabRow > div.active {
   background-color: white;
+  border: 0.5px solid black;
 }
 
 /*TODO: Add an active feat. */
@@ -297,13 +298,52 @@ input[type="radio"] {
     margin-right: 25px;
   }
 
+  .media {
+    grid-area: media;
+    height: 100%;
+  }
+
+
   svg {
     max-width: 800px;
-    max-height: 450px;
+    max-height: 300px;
     /* center image is missing */
   }
 
+
   .imgBox {
-    height: 50%;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+  }
+
+  .header {
+    grid-area: header;
+    background-color: #ffffff;
+    text-align: center;
+    width: 100%;
+    margin-top: -1em;
+    margin-bottom: -1em;
+    padding-top: 2%;
+    padding-left: 15%;
+  }
+
+  #audioControls {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #audioControls > button {
+    border: 1px solid black;
+    margin: 2px;
+    font-size: 1.0em;
+    padding: 0.5em;
+  }
+
+
+  div > h1 {
+    grid-area: h1;
   }
 }
