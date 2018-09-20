@@ -1,14 +1,32 @@
 /* Mobile first */
+#root {
+  height: 100%;
+}
+
 .App {
   height: 100%;
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-rows: 10% 10% 60% 20%;
   grid-template-areas:
     "header header header header"
-    "cb cb cb cb"
     "tabs tabs tabs tabs"
-    "media media media media";
+    "media media media media"
+    "cb cb cb cb";
   /*footer*/
+}
+
+#audioControls {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#audioControls > button {
+  border: none;
+  margin: 2px;
+  font-size: 0.8em;
+  padding: 0.5em;
 }
 
 .tabRow {
@@ -24,13 +42,18 @@
 
 .media {
   grid-area: media;
+  height: 100%;
+}
+
+.exhibition {
+  height: 80%;
 }
 
 .imgBox {
   width: 50%;
   margin-left: auto;
   margin-right: auto;
-  height: 50%; /*Slett denne om quote skal følge bilde i høyde*/
+  height: 70%; /*Slett denne om quote skal følge bilde i høyde*/
 }
 
 svg {
@@ -63,14 +86,26 @@ svg {
 
 .check_box {
   grid-area: cb;
-  border-radius: 1em;
-  background-color: lightblue;
+  background-color: #9e9e9e;
   display: grid;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.check_box > div > p {
+  font-size: 1.2em;
+  margin: 5px;
+  border-bottom: 0.3px solid black;
 }
 
 .check_box > div > label {
   display: block;
   text-align: right;
+  font-size: 1.2em;
+  margin-bottom: 0.3em;
+  cursor: pointer;
 }
 
 .tabRow {
@@ -82,19 +117,21 @@ svg {
   background-color: #ffffff;
   text-align: center;
   width: 100%;
+  margin-top: -1em;
+  margin-bottom: -1em;
 }
-
 /* all tabs */
+
 div.tabRow > div {
-  background-color: lightblue;
-  margin: 1em;
+  background-color: #9e9e9e;
+  margin-top: 0.5em;
+  border: 0.2px solid #414141;
   text-align: center;
   height: 20px;
-  border-radius: 1em;
 }
 
 div.tabRow > div:active {
-  background-color: blue;
+  background-color: #1a1a1a;
 }
 
 div.tabRow > div:hover {
@@ -121,6 +158,18 @@ div.tabRow > div:hover {
 
 label > input {
   cursor: pointer;
+}
+
+input[type="radio"] {
+  background: black;
+}
+
+/*TODO: better here*/
+@media screen and (orientation: landscape) {
+  svg {
+    max-height: 100px;
+    margin-left: 30%;
+  }
 }
 
 /* Tablet size */
