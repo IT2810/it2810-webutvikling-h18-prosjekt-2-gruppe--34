@@ -22,7 +22,7 @@ class App extends Component {
     quoteBtns: [
       { id: "einstein", name: "txt" },
       { id: "gandhi", name: "txt" },
-      { id: "michaelscott", name: "txt" }
+      { id: "scott", name: "txt" }
     ],
     soundBtns: [
       { id: "random1", name: "sound" },
