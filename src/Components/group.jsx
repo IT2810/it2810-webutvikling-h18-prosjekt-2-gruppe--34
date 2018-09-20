@@ -11,6 +11,7 @@ class Group extends Component {
     } else {
       title = "Sound:";
     }
+
     return (
       <div className={"group" + this.props.name}>
         <p>{title}</p>
