@@ -41,14 +41,7 @@ class App extends Component {
     super();
     this.onMediaClick = this.onMediaClick.bind(this);
     this.tabPicker = this.tabPicker.bind(this);
-
-    /*this.onPicChangeCategory = this.onPicChangeCategory.bind(this); //binder til APP state!*/
   }
-  /*
-  onPicChangeCategory(category) {
-    this.setState({ currentImg: category });
-  }
-*/
 
   onMediaClick(e) {
     if (e.target.name === "img") {
@@ -123,6 +116,12 @@ class App extends Component {
       this.refs.audio.pause();
       this.refs.audio.load();
     });
+  }
+
+  componentDidMount() {
+    this.loadPicture();
+    this.loadSound();
+    this.loadText();
   }
 
   render() {
