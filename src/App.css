@@ -96,7 +96,6 @@ svg {
   bottom: 0;
   right: 0;
   left: 0;
-  overflow-x: hidden;
 }
 
 .check_box > div > p {
@@ -158,6 +157,7 @@ div.tabRow > div:hover {
 
 div.tabRow > div.active {
   background-color: white;
+  border: 0.5px solid black;
 }
 
 /*TODO: Add an active feat. */
@@ -196,12 +196,12 @@ input[type="radio"] {
       "cb media tabs";
 
     grid-template-columns: 1fr 10fr 1fr;
-    grid-template-rows: minmax(10%, auto);
+    grid-template-rows: minmax(50px, auto);
     height: initial;
   }
 
   .check_box {
-    position: unset;
+    position: initial;
     width: 120px;
     grid-template-areas:
       "groupimg"
@@ -239,7 +239,6 @@ input[type="radio"] {
       "cb cb cb cb "
       "tabs tabs tabs tabs"
       "media media media media";
-    /*footer*/
   }
 
   .tabRow {
@@ -261,16 +260,23 @@ input[type="radio"] {
     border-radius: 10px;
   }
 
-  .imgBox {
-    width: 100%;
-    height: 50%;
+  .media {
+    grid-area: media;
+    height: 100%;
   }
 
   svg {
-    max-width: 500px;
-    max-height: 100%;
-    margin-left: 25%;
+    max-width: 800px;
+    max-height: 200px;
     /* center image is missing */
+  }
+
+  .imgBox {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    padding-bottom: 20px;
   }
 }
 
@@ -286,6 +292,10 @@ input[type="radio"] {
       "media media media media cb cb"
       "media media media media cb cb"
       "media media media media . .";
+
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .check_box {
@@ -297,13 +307,49 @@ input[type="radio"] {
     margin-right: 25px;
   }
 
+  .media {
+    grid-area: media;
+    height: 100%;
+  }
+
   svg {
     max-width: 800px;
-    max-height: 450px;
+    max-height: 300px;
     /* center image is missing */
   }
 
   .imgBox {
-    height: 50%;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+  }
+
+  .header {
+    grid-area: header;
+    background-color: #ffffff;
+    text-align: center;
+    width: 100%;
+    margin-top: -1em;
+    margin-bottom: -1em;
+    padding-top: 2%;
+    padding-left: 15%;
+  }
+
+  #audioControls {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #audioControls > button {
+    border: 1px solid black;
+    margin: 2px;
+    font-size: 1em;
+    padding: 0.5em;
+  }
+
+  div > h1 {
+    grid-area: h1;
   }
 }
