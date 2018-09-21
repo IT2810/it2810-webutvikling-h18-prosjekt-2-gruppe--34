@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import "./index.css";
 import Group from "./Components/group";
-import TabContainer from "./Components/TabContainer.jsx";
+import TabContainer from "./Components/tabContainer";
 import Exhibition from "./Components/exhibition";
 
 class App extends Component {
@@ -15,7 +15,7 @@ class App extends Component {
     text: [],
     sound: "not found",
     imageBtns: [
-      { id: "animal", name: "img", className: "" },
+      { id: "animal", name: "img" },
       { id: "food", name: "img" },
       { id: "internet", name: "img" }
     ],
@@ -29,12 +29,7 @@ class App extends Component {
       { id: "random2", name: "sound" },
       { id: "random3", name: "sound" }
     ],
-    tabs: [
-      { id: 1, clicked: false },
-      { id: 2, clicked: false },
-      { id: 3, clicked: false },
-      { id: 4, clicked: false }
-    ]
+    tabs: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }]
   };
 
   constructor() {
@@ -43,36 +38,45 @@ class App extends Component {
     this.tabPicker = this.tabPicker.bind(this);
   }
 
+  /**
+   * Setter state på mediatype som er valgt til det som trykkes på av radiobuttons i hver sjanger
+   * og laster inn den nye mediatypen som velges på nytt.
+   */
+
   onMediaClick(e) {
     if (e.target.name === "img") {
       this.setState({ currentImg: e.target.id }, function() {
         this.loadPicture();
-        this.loadText();
-        this.loadSound();
       });
     } else if (e.target.name === "txt") {
       this.setState({ currentQuote: e.target.id }, function() {
-        this.loadPicture();
         this.loadText();
-        this.loadSound();
       });
     } else if (e.target.name === "sound") {
       this.setState({ currentSound: e.target.id }, function() {
-        this.loadPicture();
-        this.loadText();
         this.loadSound();
       });
     }
   }
 
+  /**
+   * Tar inn en tab som blir trykket på. Setter currentTab til den tabben som blir trykket på og laster
+   * inn en ny kombinasjon av medievalgene som er gjort av brukeren.
+   * @param {*} e
+   */
   tabPicker(e) {
     this.setState({ currentTab: e.target.id }, function() {
       this.loadPicture();
       this.loadText();
       this.loadSound();
     });
-    this.setState({ clicked: true });
   }
+
+  /**
+   * Lager en nøkkel bestaaende av bilde/tab kombinasjon som lagres til cache som key.
+   * Bruker bilde/tab kombinasjon til å laste forskjellig bilder i hver sjanger til hver tab.
+   * henter bilde fra ContentFiles mappen med key kombinasjonen, og setter tilstanden til appen med det.
+   */
 
   async loadPicture() {
     const key = this.state.currentImg + this.state.currentTab;
@@ -86,9 +90,13 @@ class App extends Component {
     const text = await response.text();
     this.setState({ svg: text });
     sessionStorage.setItem(key, text);
-    console.log(url);
   }
 
+  /**
+   *  Lager en nøkkel bestaaende av text/tab kombinasjon som lagres til cache som key.
+   * Bruker text/tab kombinasjon til å laste forskjellig quotes i hver sjanger til hver tab.
+   * henter text fra ContentFiles mappen med key kombinasjonen, og setter tilstanden til appen med det.
+   */
   async loadText() {
     const key = this.state.currentQuote + this.state.currentTab;
     const cachedHits = sessionStorage.getItem(key);
@@ -101,8 +109,12 @@ class App extends Component {
     const text = await response.json();
     this.setState({ text: text.text });
     sessionStorage.setItem(key, text.text);
-    console.log(url);
   }
+
+  /**
+   * Henter url fra ContentFiles.
+   * Caches ikke fordi filene er store og det ikke er spesifisert i oppgaven
+   */
 
   loadSound() {
     const url =
@@ -111,13 +123,16 @@ class App extends Component {
       "/sound" +
       this.state.currentTab +
       ".mp3";
-    console.log(url);
     this.setState({ sound: url }, function() {
       this.refs.audio.pause();
       this.refs.audio.load();
     });
   }
 
+  /**
+   * Laster inn bilde, lyd og text ved oppstart.
+   * Sammen med setAttribute i index.js laster dette media av det som er satt som checked.
+   */
   componentDidMount() {
     this.loadPicture();
     this.loadSound();
@@ -138,7 +153,6 @@ class App extends Component {
             </button>
           </span>
         </div>
-
         <React.Fragment>
           <div className="check_box">
             <Group
@@ -157,7 +171,6 @@ class App extends Component {
               name="sound"
             />
           </div>
-
           <TabContainer
             tabs={this.state.tabs}
             onClick={this.tabPicker}

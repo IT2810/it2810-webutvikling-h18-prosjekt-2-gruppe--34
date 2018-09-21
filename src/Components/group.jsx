@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 
+/**
+ * En komponent som består av bilde-, text- eller lydknapper
+ */
+
 class Group extends Component {
   render() {
     const type = this.props.name;
@@ -12,18 +16,20 @@ class Group extends Component {
       title = "Sound:";
     }
 
+    /**
+     * Bruker listen btns som sendes fra app til å konstruere forskjellige btns for hvert element i btns lista.
+     */
     return (
       <div className={"group" + this.props.name}>
         <p>{title}</p>
         {this.props.btns.map(btn => (
-          <label>
+          <label key={btn.id}>
             {btn.id}
             <input
               name={btn.name}
               type="radio"
               key={btn.id}
               id={btn.id}
-              /* onChange={btn.onPicChangeCategory} */
               onClick={this.props.onMediaClick}
             />
           </label>
