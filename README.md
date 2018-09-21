@@ -60,9 +60,10 @@ Dette er komponenten som inneholder Tab-funksjonaliteten vår. Hovedsaklig så g
 Vi kunne klart oss uten Tab-komponenten og heller kodet tab'ene i TabContainer, men vi tenkte at det var en fordel å gjøre det mer
 dynamisk ved å generere underkomponenter ettersom det også var mer oversiktlig.
 
-- #####Tab
-  Her rendres bare en div som er vår knapp for den bestemte tab'en. Vi har her også en funksjon som
-  håndterer hvilken tab som er aktiv for øyeblikket.
+##### Tab
+
+Her rendres bare en div som er vår knapp for den bestemte tab'en. Vi har her også en funksjon som
+håndterer hvilken tab som er aktiv for øyeblikket.
 
 #### Exhibition
 
@@ -71,12 +72,14 @@ med lyd som en underkomponent her på grunn av måten lyd er implementert. Det f
 det ikke var noen spesielle krav til hvordan lyd var implementert gjorde vi det på denne måten.
 Så Exhibition-komponenten vår samler egentlig bare de ulike kompoentene for media.
 
-- #####Image
-  Veldig enkel komponent som inneholder en div der SVG-elementet blir satt inn basert på tilstanden til App.
+##### Image
 
-- #####Quote
-  På samme måte som Image er dette også en veldig enkel komponent der teksten blir satt inn i en paragraf basert på
-  tilstanden til App.
+Veldig enkel komponent som inneholder en div der SVG-elementet blir satt inn basert på tilstanden til App.
+
+##### Quote
+
+På samme måte som Image er dette også en veldig enkel komponent der teksten blir satt inn i en paragraf basert på
+tilstanden til App.
 
 <hr>
 
