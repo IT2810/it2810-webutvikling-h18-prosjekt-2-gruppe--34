@@ -1,5 +1,7 @@
 # IT2810 Webutvikling Prosjekt 2
 
+Nettsiden kjører [her](http://it2810-34.idi.ntnu.no/prosjekt2/).
+
 ## Dokumentasjon - Gruppe 34
 
 I denne dokumentasjonen skal vi diskutere og begrunne de viktigste valgene vi har gjort og
@@ -103,7 +105,7 @@ av lydkategori.
 
 ### Responsive Web Design
 
-Vi har sørget for at alle kravene til responsiveness er oppfylt. Dette har vi kodet fra bunnen av i CSS,
+Vi har sørget for at alle kravene til responsiveness er oppfylt. Dette har vi kodet fra bunnen av i CSS og bruk av CSS-Grid,
 med alle elementene nevnt i kravene (viewport, media-queries, bilder som skalerer og flytende layout). Litt om de
 forskjellige elementene:
 
@@ -115,7 +117,7 @@ forskjellige elementene:
 
 Vi valgte også å designe siden for mobil først, ettersom det er vanskeligere å sørge for brukervennlighet på mobil enn
 på en større skjerm. Vi har noen utfordringer med orientation på mobil, som ble oppdaget i testfasen. Mer om dette
-i testdokumentet.
+i testseksjonen.
 
 <hr>
 
@@ -132,6 +134,7 @@ Master branchen ble lite brukt, ettersom vi heller lagde en "dev" branch der all
 Master branchen skulle heller brukes til det ferdige prosjektet. Ellers gjorde vi det sånn at alle nye funkjsoner skulle
 implementeres i en egen branch og merges med "dev" når testing av funksjonaliteten var gjort.
 Måten vi håndterte branches på gjorde at vi hele tiden hadde en relativt bra fungerende versjon av websiden.
+Master branchen er lasted ned på server, slik at nettsiden som er live viser den oppdaterte master branchen.
 
 <hr>
 
