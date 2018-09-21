@@ -1,11 +1,7 @@
 import React, { Component } from "react";
-import Tab from "./Tab.jsx";
+import Tab from "./tab";
 
 class TabContainer extends Component {
-  constructor() {
-    super();
-  }
-
   render() {
     const { tabs } = this.props;
     return (
